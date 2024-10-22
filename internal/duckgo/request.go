@@ -8,12 +8,13 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"github.com/gin-gonic/gin"
 	"io"
 	"net/http"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 var (
@@ -60,7 +61,7 @@ func postStatus(client httpclient.AuroraHttpClient, proxyUrl string) (*http.Resp
 	header := createHeader()
 	header.Set("accept", "*/*")
 	header.Set("x-vqd-accept", "1")
-	response, err := client.Request(httpclient.GET, "https://duckduckgo.com/duckchat/v1/status", header, nil, nil)
+	response, err := client.Request(httpclient.GET, "https://p.till.us.kg/till/https/duckduckgo.com/duckchat/v1/status", header, nil, nil)
 	if err != nil {
 		return nil, err
 	}
@@ -78,7 +79,7 @@ func POSTconversation(client httpclient.AuroraHttpClient, request duckgotypes.Ap
 	header := createHeader()
 	header.Set("accept", "text/event-stream")
 	header.Set("x-vqd-4", token)
-	response, err := client.Request(httpclient.POST, "https://duckduckgo.com/duckchat/v1/chat", header, nil, bytes.NewBuffer(body_json))
+	response, err := client.Request(httpclient.POST, "https://p.till.us.kg/till/https/duckduckgo.com/duckchat/v1/chat", header, nil, bytes.NewBuffer(body_json))
 	if err != nil {
 		return nil, err
 	}
