@@ -39,22 +39,22 @@ jobs:
             duck2api-darwin-amd64.tar.gz
             duck2api-freebsd-amd64.tar.gz
             
-    - name: Create release
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
-      with:
-        tag_name: v2.1.4
-        files: |
-            duck2api-linux-amd64.tar.gz
-            duck2api-windows-amd64.tar.gz
-            duck2api-darwin-amd64.tar.gz
-            duck2api-freebsd-amd64.tar.gz
+    # - name: Create release
+    #   uses: softprops/action-gh-release@v1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GHCR_PAT }}
+    #   with:
+    #     tag_name: v2.1.4
+    #     files: |
+    #         duck2api-linux-amd64.tar.gz
+    #         duck2api-windows-amd64.tar.gz
+    #         duck2api-darwin-amd64.tar.gz
+    #         duck2api-freebsd-amd64.tar.gz
               
-    - name: Delete workflow runs
-      uses: Mattraks/delete-workflow-runs@v2
-      with:
-        token: ${{ github.token }}
-        repository: ${{ github.repository }}
-        retain_days: 1
-        keep_minimum_runs: 8
+    # - name: Delete workflow runs
+    #   uses: Mattraks/delete-workflow-runs@v2
+    #   with:
+    #     token: ${{ github.token }}
+    #     repository: ${{ github.repository }}
+    #     retain_days: 1
+    #     keep_minimum_runs: 8
