@@ -25,6 +25,6 @@ WORKDIR /app
 COPY --from=builder /app/duck2api /app/duck2api
 
 # 暴露端口
-EXPOSE 8080
+EXPOSE 8888
 
 CMD ["/app/duck2api"]
