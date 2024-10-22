@@ -37,7 +37,7 @@ func main() {
 	if port == "" {
 		port = os.Getenv("PORT")
 		if port == "" {
-			port = "8"
+			port = "8888"
 		}
 	}
 

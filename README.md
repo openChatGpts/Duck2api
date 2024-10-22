@@ -1,10 +1,13 @@
 # duck2api
+>  高版本使用镜像网站 https://p.till.us.kg/till/https/duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat&duckai=1 进行访问
+>
 
 # Web端 
 
-访问http://你的服务器ip:8080/web
+访问http://你的服务器ip:8888/web
 
-![web使用](https://jsd.cdn.zzko.cn/gh/xiaozhou26/tuph@main/images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202024-04-07%20111706.png)
+本地访问: http://127.0.0.1:8888/web
+![web使用](https://raw.githubusercontent.com/hhhaiai/Picture/main/img/202410221640721.png)
 
 ## Deploy
 
@@ -15,40 +18,29 @@
 ### 编译部署
 
 ```bash
-git clone https://github.com/aurora-develop/duck2api
-cd duck2api
+git clone https://github.com/openChatGpts/Duck2api.git
+cd Duck2api
 go build -o duck2api
 chmod +x ./duck2api
 ./duck2api
 ```
 
 ### Docker部署
-## Docker部署
-您需要安装Docker和Docker Compose。
-
-```bash
-docker run -d \
-  --name duck2api \
-  -p 8080:8080 \
-  ghcr.io/aurora-develop/duck2api:latest
-```
-
-## Docker Compose部署
-创建一个新的目录，例如duck2api，并进入该目录：
-```bash
-mkdir duck2api
-cd duck2api
-```
-在此目录中下载库中的docker-compose.yml文件：
-
-```bash
-docker-compose up -d
-```
+暂时支持
 
 ## Usage
 
-```bash
-curl --location 'http://你的服务器ip:8080/v1/chat/completions' \
+``` bash
+# 其他地址版本
+curl --location 'http://你的服务器ip:8888/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{
+     "model": "gpt-4o-mini",
+     "messages": [{"role": "user", "content": "Say this is a test!"}],
+     "stream": true
+   }'
+# 本地版本
+curl --location 'http://127.0.0.1:8080/v1/chat/completions' \
 --header 'Content-Type: application/json' \
 --data '{
      "model": "gpt-4o-mini",
@@ -70,7 +62,6 @@ curl --location 'http://你的服务器ip:8080/v1/chat/completions' \
 
 ### 环境变量
 ```
-
 Authorization=your_authorization  用户认证 key。
 TLS_CERT=path_to_your_tls_cert 存储TLS（传输层安全协议）证书的路径。
 TLS_KEY=path_to_your_tls_key 存储TLS（传输层安全协议）证书的路径。
@@ -80,7 +71,6 @@ PROXY_URL=your_proxy_url 添加代理池来。
 ## 鸣谢
 
 感谢各位大佬的pr支持，感谢。
-
 
 ## 参考项目
 
