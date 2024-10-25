@@ -40,13 +40,53 @@ curl --location 'http://你的服务器ip:8888/v1/chat/completions' \
      "stream": true
    }'
 # 本地版本
-curl --location 'http://127.0.0.1:8080/v1/chat/completions' \
+curl --location 'http://127.0.0.1:8888/v1/chat/completions' \
 --header 'Content-Type: application/json' \
 --data '{
      "model": "gpt-4o-mini",
      "messages": [{"role": "user", "content": "Say this is a test!"}],
      "stream": true
    }'
+
+## 系统提示词
+curl --location 'http://127.0.0.1:8888/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{
+     "model": "gpt-4o-mini",
+     "messages": [{"role":"system","content":"你是一个辅助机器人"},{"role": "user", "content": "你的知识库最后什么日期"}],
+     "stream": true
+   }'
+
+## 非流式系统提示词
+curl --location 'http://127.0.0.1:8888/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{
+     "model": "gpt-4o-mini",
+     "messages": [{"role":"system","content":"你是一个辅助机器人"},{"role": "user", "content": "你的知识库最后什么日期"}],
+     "stream": false
+   }'
+
+## 加入更多参数
+curl --location 'http://127.0.0.1:8888/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{
+     "model": "gpt-4o-mini",
+     "messages": [{"role":"system","content":"你是一个辅助机器人"},{"role": "user", "content": "你的知识库最后什么日期"}],
+     "stream": true,
+     "temperature":0.35,
+     "top_p":0.15
+   }'
+
+curl --location 'http://127.0.0.1:8888/v1/chat/completions' \
+--header 'Content-Type: application/json' \
+--data '{
+     "model": "gpt-4o-mini",
+     "messages": [{"role":"system","content":"你是一个辅助机器人"},{"role": "user", "content": "你的知识库最后什么日期"}],
+     "stream": false,
+     "temperature":0.35,
+     "top_p":0.15
+   }'
+  
 ```
 
 ## 支持的模型
